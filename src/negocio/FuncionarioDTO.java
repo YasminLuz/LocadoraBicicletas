@@ -4,6 +4,6 @@ package negocio;
  *
  * @author Yasmin
  */
-public class FuncionarioDTO {
+public class FuncionarioDTO extends PessoaDTO{
     
 }
