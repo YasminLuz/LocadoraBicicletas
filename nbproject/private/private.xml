@@ -3,12 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/Locadora/src/gui/Index.java</file>
-            <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/Locadora/src/negocio/PessoaDTO.java</file>
-            <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/Locadora/src/gui/CadastroCliente.java</file>
-            <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/Locadora/src/gui/TeleCadastro.java</file>
-            <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/Locadora/src/negocio/AcessóriosDTO.java</file>
+            <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/Locadora/src/gui/AlugarAcessorios.java</file>
+            <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/Locadora/src/persistencia/ConexaoDAO.java</file>
+            <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/Locadora/src/gui/Opcoes.java</file>
+            <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/Locadora/src/gui/AlugarBicicletas.java</file>
+            <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/Locadora/src/gui/HistoricoAluguel.java</file>
             <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/Locadora/src/gui/Login.java</file>
+            <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/Locadora/src/gui/Index.java</file>
+            <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/Locadora/src/Interface/IFuncionalidades.java</file>
+            <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/Locadora/src/negocio/ClienteDTO.java</file>
+            <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/Locadora/src/negocio/EnderecoDTO.java</file>
+            <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/Locadora/src/gui/CadastroCliente.java</file>
+            <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/Locadora/src/gui/Postos.java</file>
+            <file>file:/C:/Users/Yasmin/Documents/NetBeansProjects/Locadora/src/gui/Apresentacao.java</file>
         </group>
     </open-files>
 </project-private>

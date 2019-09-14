@@ -1,23 +1,37 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
+
+import Interface.IFuncionalidades;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.table.DefaultTableModel;
+import negocio.AcessoriosDTO;
+import negocio.AluguelDTO;
+import persistencia.ConexaoDAO;
 
 /**
  *
  * @author Yasmin
  */
-public class AlugarAcessorios extends javax.swing.JFrame {
+public class AlugarAcessorios extends javax.swing.JFrame implements IFuncionalidades{
 
     /**
      * Creates new form AlugarAcessorios
      */
+    
+    ConexaoDAO conn = ConexaoDAO.getInstance();
+    
     public AlugarAcessorios() {
         initComponents();
+        exibir();
+        jSpinner1.setModel(new SpinnerNumberModel(0, 0, 35, 1)); 
     }
 
+//    public static String nome_posto;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,7 +49,7 @@ public class AlugarAcessorios extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTxtPosto = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Alugar acessórios");
@@ -46,17 +60,17 @@ public class AlugarAcessorios extends javax.swing.JFrame {
         jTable1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Nome do acessorio", "Preco"
+                "Id", "Nome do acessorio", "Preco"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                true, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -84,9 +98,9 @@ public class AlugarAcessorios extends javax.swing.JFrame {
 
         jLabel2.setText("Posto selecionado:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTxtPosto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTxtPostoActionPerformed(evt);
             }
         });
 
@@ -100,8 +114,7 @@ public class AlugarAcessorios extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jTxtPosto, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -109,10 +122,10 @@ public class AlugarAcessorios extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE))
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(20, 20, 20))))
+                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,7 +133,7 @@ public class AlugarAcessorios extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTxtPosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -143,23 +156,41 @@ public class AlugarAcessorios extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+   
+    private void exibir(){
+       ArrayList<AcessoriosDTO> lista = ConexaoDAO.getInstance().AcessorioList();
+       DefaultTableModel tabmodel = (DefaultTableModel)jTable1.getModel(); 
+       tabmodel.setNumRows(0);
+       
+       for (int i = 0; i < lista.size(); i++)
+          tabmodel.addRow(new Object[]{lista.get(i).getId_acessorios(),lista.get(i).getNome_acessorio(), lista.get(i).getPreco()});
+    }
+    
+    @Override
+    public final void importarPosto(String str){
+        jTxtPosto.setText(str);
+    }
 
+    public int exportarIdAcessorios(){
+        return Integer.parseInt(jTable1.getValueAt(jTable1.getSelectedRow(), 0).toString());
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
- 
+        this.alugar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new Apresentacao().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTxtPostoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtPostoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTxtPostoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,6 +236,39 @@ public class AlugarAcessorios extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTxtPosto;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void alugar() {
+           try {
+            AlugarBicicletas bike = new AlugarBicicletas();
+            CadastroCliente cadastro = new CadastroCliente();
+            Postos posto = new Postos();
+            
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            String d = sdf.format(new Date(System.currentTimeMillis())); //data sistema
+            
+            Date data1, data2;
+            
+            data1 = new java.sql.Date(sdf.parse(d).getTime());
+            data2 = data1;
+            
+            if(cadastro.exportarIDsCadastro()[0] == 1){
+                data2.setDate(data1.getDate());
+            } else if (cadastro.exportarIDsCadastro()[0] == 2){
+                data2.setDate(data1.getDate() + 5);
+            } else if (cadastro.exportarIDsCadastro()[0] == 3 || cadastro.exportarIDsCadastro()[0] == 5){
+                data2.setDate(data1.getDate() + 30);
+            } else if (cadastro.exportarIDsCadastro()[0] == 4 || cadastro.exportarIDsCadastro()[0] == 6){
+                data2.setDate(data1.getDate() + 365);
+            }
+            
+            AluguelDTO aluguei = new AluguelDTO(data1, data2, cadastro.exportarIDsCadastro()[1], 0, (int)cadastro.exportarIDsCadastro()[0], bike.exportarIdBicicleta()[0], posto.exportarIdPosto(), jSpinner1.getComponentCount());
+            ConexaoDAO.getInstance().createAluguel(aluguei);
+            
+        } catch (ParseException ex) {
+            Logger.getLogger(AlugarBicicletas.class.getName()).log(Level.SEVERE, null, ex);
+        }  
+    }
 }

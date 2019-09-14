@@ -5,10 +5,18 @@ package negocio;
  * @author Yasmin
  */
 public class AcessoriosDTO {
-//    private int id_aluguel;
+    private int id;
     private String nome_acessorio;
     private double preco;
 
+    public int getId_acessorios() {
+        return id;
+    }
+
+    public void setId_acessorios(int id_aluguel) {
+        this.id = id_aluguel;
+    }
+ 
     public String getNome_acessorio() {
         return nome_acessorio;
     }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 /**
@@ -17,6 +12,8 @@ public class Opcoes extends javax.swing.JFrame {
     public Opcoes() {
         initComponents();
     }
+    
+    private String posto;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,25 +25,25 @@ public class Opcoes extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
+        jBtBicicletas = new javax.swing.JToggleButton();
+        jBtAcessorios = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jToggleButton1.setText("Bicicletas");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBtBicicletas.setText("Bicicletas");
+        jBtBicicletas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                jBtBicicletasActionPerformed(evt);
             }
         });
 
-        jToggleButton2.setText("Acessórios");
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBtAcessorios.setText("Acessórios");
+        jBtAcessorios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+                jBtAcessoriosActionPerformed(evt);
             }
         });
 
@@ -61,16 +58,16 @@ public class Opcoes extends javax.swing.JFrame {
                 .addContainerGap(75, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBtBicicletas, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jToggleButton2)
+                        .addComponent(jBtAcessorios)
                         .addGap(74, 74, 74))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(117, 117, 117))))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jToggleButton1, jToggleButton2});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jBtAcessorios, jBtBicicletas});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,12 +76,12 @@ public class Opcoes extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToggleButton2))
+                    .addComponent(jBtBicicletas, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBtAcessorios))
                 .addContainerGap(127, Short.MAX_VALUE))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jToggleButton1, jToggleButton2});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jBtAcessorios, jBtBicicletas});
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,13 +97,17 @@ public class Opcoes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-       new AlugarBicicletas().setVisible(true);
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    private void jBtBicicletasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtBicicletasActionPerformed
+        AlugarBicicletas alugar = new AlugarBicicletas();
+//        alugar.importarPosto(_getimportarPosto());
+        alugar.setVisible(true);
+    }//GEN-LAST:event_jBtBicicletasActionPerformed
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-       new AlugarAcessorios().setVisible(true);
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+    private void jBtAcessoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtAcessoriosActionPerformed
+        AlugarAcessorios alugar = new AlugarAcessorios();
+//        alugar.importarPosto(_getimportarPosto());
+        alugar.setVisible(true);
+    }//GEN-LAST:event_jBtAcessoriosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,11 +143,19 @@ public class Opcoes extends javax.swing.JFrame {
             }
         });
     }
+    
+    public void _setimportarPosto(String str){
+        this.posto = str;
+    }
+    
+     public String _getimportarPosto(){
+        return posto;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton jBtAcessorios;
+    private javax.swing.JToggleButton jBtBicicletas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
     // End of variables declaration//GEN-END:variables
 }

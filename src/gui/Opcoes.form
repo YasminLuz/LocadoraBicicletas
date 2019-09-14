@@ -47,9 +47,9 @@
                   <EmptySpace pref="75" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="jToggleButton1" linkSize="1" min="-2" pref="119" max="-2" attributes="0"/>
+                          <Component id="jBtBicicletas" linkSize="1" min="-2" pref="119" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jToggleButton2" linkSize="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jBtAcessorios" linkSize="1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -67,8 +67,8 @@
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jToggleButton1" linkSize="2" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
-                      <Component id="jToggleButton2" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jBtBicicletas" linkSize="2" alignment="3" min="-2" pref="58" max="-2" attributes="0"/>
+                      <Component id="jBtAcessorios" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="127" max="32767" attributes="0"/>
               </Group>
@@ -76,20 +76,20 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JToggleButton" name="jToggleButton1">
+        <Component class="javax.swing.JToggleButton" name="jBtBicicletas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Bicicletas"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtBicicletasActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JToggleButton" name="jToggleButton2">
+        <Component class="javax.swing.JToggleButton" name="jBtAcessorios">
           <Properties>
             <Property name="text" type="java.lang.String" value="Acess&#xf3;rios"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jToggleButton2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtAcessoriosActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">

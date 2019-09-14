@@ -7,10 +7,18 @@ import javafx.scene.chart.PieChart.Data;
  * @author Yasmin
  */
 public class BicicletaDTO {
-    private int quantidade;
+    private int id, quantidade;
     private String fabricante, modelo, cor, tipo_bicicleta, tamanho;
     private Data data_compra, data_manutencao;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public int getQuantidade() {
         return quantidade;
     }
