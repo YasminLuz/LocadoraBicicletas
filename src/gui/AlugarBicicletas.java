@@ -11,6 +11,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.table.DefaultTableModel;
 import negocio.AluguelDTO;
 import negocio.BicicletaDTO;
+import negocio.PostoDTO;
 import persistencia.ConexaoDAO;
 
 /**
@@ -25,9 +26,7 @@ public class AlugarBicicletas extends javax.swing.JFrame implements IFuncionalid
     public AlugarBicicletas() {
         initComponents();
         exibir();
-//        this.importarPosto();
         jSpinner1.setModel(new SpinnerNumberModel(0, 0, 35, 1));
-        
     }
 
 //    public static String nome_posto;
@@ -146,7 +145,7 @@ public class AlugarBicicletas extends javax.swing.JFrame implements IFuncionalid
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+    PostoDTO posto;
     
     private void exibir(){  
        ArrayList<BicicletaDTO> lista = ConexaoDAO.getInstance().BikeList();
